@@ -46,6 +46,11 @@ namespace Treehouse.FitnessFrog.Controllers
             return View();
         }
 
+        [ActionName("Add"), HttpPost]
+        public ActionResult AddPost()
+        {
+            return View();
+        }
         public ActionResult Edit(int? id) //the ? means the parameter can have a value of null
         {
             if (id == null)   //if the id parameter is null(not defined) then return the httpstatus code error
