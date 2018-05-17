@@ -46,8 +46,8 @@ namespace Treehouse.FitnessFrog.Controllers
             return View();
         }
 
-        [ActionName("Add"), HttpPost]
-        public ActionResult AddPost()
+        [ActionName("Add"), HttpPost]      //used an attribute named "ActionName" within brackets. then set the parameter as "Add" 
+        public ActionResult AddPost()      //and also the attribute "HttpPost"
         {
             return View();
         }
