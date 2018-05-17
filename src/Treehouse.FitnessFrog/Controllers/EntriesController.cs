@@ -41,17 +41,27 @@ namespace Treehouse.FitnessFrog.Controllers
             return View(entries);
         }
 
-        public ActionResult Add()
+        public ActionResult Add() //this is referencing the "Add" field on the page
         {
             return View();
         }
 
-        [ActionName("Add"), HttpPost]      //used an attribute named "ActionName" within brackets. then set the parameter as "Add" 
-        public ActionResult AddPost()      //and also the attribute "HttpPost"
+        [ActionName("Add"), HttpPost]      //used an attribute named "ActionName" within brackets. then set the parameter as "Add"
+        public ActionResult AddPost(string date, string activityId, string duration, string intensity, string exclude, string notes)   //MVC allows us to add in the parameters to capture the input from the field  
+                                                                                                                      //this process is called "Model Binding" and its just matching the parameter names with the form field names  
         {
+            ViewBag.Date = date;
+            ViewBag.ActivityId = activityId;
+            ViewBag.Duration = duration;
+            ViewBag.Intensity = intensity;
+            ViewBag.Exclude = exclude;
+            ViewBag.Notes = notes;
+            //set the input element value attribute in the view/Add.cshtml
+
+
             return View();
         }
-        public ActionResult Edit(int? id) //the ? means the parameter can have a value of null
+        public ActionResult Edit(int? id) //the ? means the parameter can have a value of null...this is referencing the "Edit" field on the page
         {
             if (id == null)   //if the id parameter is null(not defined) then return the httpstatus code error
             {
@@ -61,7 +71,7 @@ namespace Treehouse.FitnessFrog.Controllers
             return View();
         }
 
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id) //this is referencing the "Delete" field on the page
         {
             if (id == null)
             {
