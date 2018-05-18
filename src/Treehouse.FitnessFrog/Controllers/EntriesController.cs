@@ -48,25 +48,8 @@ namespace Treehouse.FitnessFrog.Controllers
 
         [ActionName("Add"), HttpPost]      //used an attribute named "ActionName" within brackets. then set the parameter as "Add"....also used the attribute of "HttpPost" 
         public ActionResult AddPost(DateTime? date, int? activityId, double? duration, Entry.IntensityLevel? intensity, bool? exclude, string notes)   //MVC allows us to add in the parameters to capture the input from the field  
-                                                                                                                      //this process is called "Model Binding" and its just matching the parameter names with the form field names  
+                                        //this process is called "Model Binding" and its just matching the parameter names with the form field names  
         {
-
-            //to parse the string Date into an integer, we first create the variable to store te conversion into
-            //DateTime dateValue;
-            //DateTime.TryParse(date, out dateValue);
-            //or you can change the parameter data types passed in inside of the above method
-
-
-            //the AttemptedValue property will check the parameters to see if they're formatted correctly...ex: date/time has to be submitted as 1/1/2011 12:00
-            ViewBag.Date = ModelState["Date"].Value.AttemptedValue;
-            ViewBag.ActivityId = ModelState["ActivityId"].Value.AttemptedValue;
-            ViewBag.Duration = ModelState["Duration"].Value.AttemptedValue;
-            ViewBag.Intensity = ModelState["Intensity"].Value.AttemptedValue;
-            ViewBag.Exclude = ModelState["Exclude"].Value.AttemptedValue;
-            ViewBag.Notes = ModelState["Notes"].Value.AttemptedValue;
-            //set the input element value attribute in the view/Add.cshtml
-
-
             return View();
         }
         public ActionResult Edit(int? id) //the ? means the parameter can have a value of null...this is referencing the "Edit" field on the page
