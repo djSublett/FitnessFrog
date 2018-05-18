@@ -46,10 +46,17 @@ namespace Treehouse.FitnessFrog.Controllers
             return View();
         }
 
-        [ActionName("Add"), HttpPost]      //used an attribute named "ActionName" within brackets. then set the parameter as "Add"
-        public ActionResult AddPost(string date, string activityId, string duration, string intensity, string exclude, string notes)   //MVC allows us to add in the parameters to capture the input from the field  
+        [ActionName("Add"), HttpPost]      //used an attribute named "ActionName" within brackets. then set the parameter as "Add"....also used the attribute of "HttpPost" 
+        public ActionResult AddPost(DateTime? date, int? activityId, double? duration, Entry.IntensityLevel? intensity, bool? exclude, string notes)   //MVC allows us to add in the parameters to capture the input from the field  
                                                                                                                       //this process is called "Model Binding" and its just matching the parameter names with the form field names  
         {
+
+            //to parse the string Date into an integer, we first create the variable to store te conversion into
+            //DateTime dateValue;
+            //DateTime.TryParse(date, out dateValue);
+            //or you can change the parameter data types passed in inside of the above method
+
+
             ViewBag.Date = date;
             ViewBag.ActivityId = activityId;
             ViewBag.Duration = duration;
