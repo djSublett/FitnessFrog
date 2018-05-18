@@ -57,12 +57,13 @@ namespace Treehouse.FitnessFrog.Controllers
             //or you can change the parameter data types passed in inside of the above method
 
 
-            ViewBag.Date = date;
-            ViewBag.ActivityId = activityId;
-            ViewBag.Duration = duration;
-            ViewBag.Intensity = intensity;
-            ViewBag.Exclude = exclude;
-            ViewBag.Notes = notes;
+            //the AttemptedValue property will check the parameters to see if they're formatted correctly...ex: date/time has to be submitted as 1/1/2011 12:00
+            ViewBag.Date = ModelState["Date"].Value.AttemptedValue;
+            ViewBag.ActivityId = ModelState["ActivityId"].Value.AttemptedValue;
+            ViewBag.Duration = ModelState["Duration"].Value.AttemptedValue;
+            ViewBag.Intensity = ModelState["Intensity"].Value.AttemptedValue;
+            ViewBag.Exclude = ModelState["Exclude"].Value.AttemptedValue;
+            ViewBag.Notes = ModelState["Notes"].Value.AttemptedValue;
             //set the input element value attribute in the view/Add.cshtml
 
 
