@@ -43,14 +43,28 @@ namespace Treehouse.FitnessFrog.Controllers
 
         public ActionResult Add() //this is referencing the "Add" field on the page
         {
-            return View();
+            var entry = new Entry()
+            {
+                Date = DateTime.Today
+            };
+
+            return View(entry);
         }
 
-        [ActionName("Add"), HttpPost]      //used an attribute named "ActionName" within brackets. then set the parameter as "Add"....also used the attribute of "HttpPost" 
-        public ActionResult AddPost(DateTime? date, int? activityId, double? duration, Entry.IntensityLevel? intensity, bool? exclude, string notes)   //MVC allows us to add in the parameters to capture the input from the field  
-                                        //this process is called "Model Binding" and its just matching the parameter names with the form field names  
+
+        [HttpPost]      //used an attribute named "ActionName" within brackets. then set the parameter as "Add"....also used the attribute of "HttpPost" 
+        public ActionResult Add(Entry entry) //Model Binder will recognize this parameter is an instance of a class or reference type
+                                                //and then bind the incoming form field values to its properties
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _entriesRepository.AddEntry(entry);
+
+                //redirected to the Add Entry list page
+                return RedirectToAction("Index");
+            }
+
+            return View(entry);
         }
         public ActionResult Edit(int? id) //the ? means the parameter can have a value of null...this is referencing the "Edit" field on the page
         {
