@@ -59,12 +59,20 @@ namespace Treehouse.FitnessFrog.Controllers
         public ActionResult Add(Entry entry) //Model Binder will recognize this parameter is an instance of a class or reference type
                                                 //and then bind the incoming form field values to its properties
         {
+            //if there arent any "duration" field validation errors
+            //then make sure the duration entered is greater than 0
+            if(ModelState.IsValidField("Duration") && entry.Duration <= 0)
+            {
+                ModelState.AddModelError("Duration",
+                    "The Duration field value must be greater than '0'.");
+            }
             if (ModelState.IsValid)
             {
                 _entriesRepository.AddEntry(entry);
 
                 //redirected to the Add Entry list page
                 return RedirectToAction("Index");
+
             }
 
             ViewBag.ActivitiesSelectListItems = new SelectList(

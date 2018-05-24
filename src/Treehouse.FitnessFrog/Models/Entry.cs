@@ -37,6 +37,7 @@ namespace Treehouse.FitnessFrog.Models
         /// <param name="intensity">The intensity for the entry.</param>
         /// <param name="exclude">Whether or not the entry should be excluded when calculating the total fitness activity.</param>
         /// <param name="notes">The notes for the entry.</param>
+
         public Entry(int id, int year, int month, int day, Activity.ActivityType activityType, 
             double duration, IntensityLevel intensity = IntensityLevel.Medium,
             bool exclude = false, string notes = null)
@@ -89,6 +90,8 @@ namespace Treehouse.FitnessFrog.Models
         /// <summary>
         /// The notes for the entry.
         /// </summary>
+        [Required] //added this attribute so the user is required to fill out the "Note" field
+        [MaxLength(200, "The Notes field cannot be longer than 200 characters.")]
         public string Notes { get; set; }
     }
 }
