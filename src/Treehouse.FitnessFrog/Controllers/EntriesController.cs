@@ -59,6 +59,8 @@ namespace Treehouse.FitnessFrog.Controllers
         public ActionResult Add(Entry entry) //Model Binder will recognize this parameter is an instance of a class or reference type
                                                 //and then bind the incoming form field values to its properties
         {
+            ModelState.AddModelError("", "This is a global message.");
+
             //if there arent any "duration" field validation errors
             //then make sure the duration entered is greater than 0
             if(ModelState.IsValidField("Duration") && entry.Duration <= 0)
