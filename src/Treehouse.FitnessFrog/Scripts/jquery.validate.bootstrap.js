@@ -22,10 +22,10 @@
     //this jquery validator calls the (setDefaults) function and passes in the defaultOptions object 
     $.validator.setDefaults(defaultOptions);
 
-    //this Microsoft jquery function uses our defaultOptions.errorClass property for an error,
+    //this Microsoft jquery function uses our defaultOptions.errorClass property for an error
     //and the validClass uses the defaultOptions.validClass property for something valid
     $.validator.unobtrusive.options = {
         errorClass: defaultOptions.errorClass,
-        validClass: defaultOptions.validClass,
+        validClass: defaultOptions.validClass
     };
 })(jQuery);
